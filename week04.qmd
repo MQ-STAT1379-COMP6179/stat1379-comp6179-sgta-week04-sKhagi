@@ -6,6 +6,9 @@ execute:
   echo: true
   eval: true
 format: html
+editor: 
+  markdown: 
+    wrap: sentence
 ---
 
 ```{r setup, include=FALSE}
@@ -14,17 +17,16 @@ library(tidyverse)
 library(babynames)
 ```
 
+# Pre-SGTA Work
 
+## Working with Data in R
 
-# Pre-SGTA Work  
+### Understanding Data Types and Structures
 
-## Working with Data in R  
+Load the `tidyverse` library and explore different R data types by running the code below.
+For each block, **predict the output before running it** and observe what `typeof()`, `class()`, and `str()` tell you.
 
-### Understanding Data Types and Structures  
-
-Load the `tidyverse` library and explore different R data types by running the code below. For each block, **predict the output before running it** and observe what `typeof()`, `class()`, and `str()` tell you.
-
-#### Atomic Vectors - Doubles  
+#### Atomic Vectors - Doubles
 
 ```{r atomic-vectors-doubles, eval=FALSE}
 library(tidyverse)
@@ -49,14 +51,12 @@ str(x)
 
 **Your observations:**
 
-- What differences do you notice between these three ways of creating vectors?
-- Why might `typeof()` give different results?
+-   What differences do you notice between these three ways of creating vectors?
+-   Why might `typeof()` give different results?
 
 *Write your thoughts here:*
 
-
-
-#### Atomic Vectors - Integers  
+#### Atomic Vectors - Integers
 
 ```{r atomic-vectors-integers, eval=FALSE}
 x <- c(1L, 2L, 3L, 4L, 5L, 6L)
@@ -80,14 +80,12 @@ str(x)
 
 **Your observations:**
 
-- What happens when you mix integers and doubles in a vector?
-- What does the `L` suffix do?
+-   What happens when you mix integers and doubles in a vector?
+-   What does the `L` suffix do?
 
 *Write your thoughts here:*
 
-
-
-#### Atomic Vectors - Characters  
+#### Atomic Vectors - Characters
 
 ```{r atomic-vectors-characters, eval=FALSE}
 x <- "This"
@@ -126,14 +124,12 @@ glue::glue("This unit is great.
 
 **Your task:**
 
-- Compare the different methods for combining strings
-- What's the difference between `paste()`, `cat()`, and `glue()`?
+-   Compare the different methods for combining strings
+-   What's the difference between `paste()`, `cat()`, and `glue()`?
 
 *Write your analysis here:*
 
-
-
-#### Atomic Vectors - Logicals  
+#### Atomic Vectors - Logicals
 
 ```{r atomic-vectors-logicals, eval=FALSE, error=TRUE}
 1 > 0
@@ -168,14 +164,12 @@ str(x)
 
 **Your task:**
 
-- Explain why `1 <- 1` causes an error
-- What's the difference between `=` and `==`?
+-   Explain why `1 <- 1` causes an error
+-   What's the difference between `=` and `==`?
 
 *Write your explanation here:*
 
-
-
-#### Factors  
+#### Factors
 
 ```{r factors, eval=FALSE}
 x <- c("spring", "spring", "winter", "spring", "winter", "spring", "spring")
@@ -197,15 +191,13 @@ as.character(x)
 
 **Your analysis:**
 
-- How are factors different from character vectors?
+-   How are factors different from character vectors?
 
 *Write your thoughts here:*
 
+### Working with Matrices and Arrays
 
-
-### Working with Matrices and Arrays  
-
-#### Matrices  
+#### Matrices
 
 ```{r matrices, eval=FALSE}
 m <- matrix(1:6, nrow = 2)
@@ -221,14 +213,12 @@ m
 
 **Your task:**
 
-- Explain the difference between the two matrix creations above
-- How does R fill matrices by default?
+-   Explain the difference between the two matrix creations above
+-   How does R fill matrices by default?
 
 *Write your answer here:*
 
-
-
-#### Arrays  
+#### Arrays
 
 ```{r arrays, eval=FALSE}
 x <- array(c(1:5, 11:15), dim = c(5, 5))
@@ -255,14 +245,12 @@ x
 
 **Your task:**
 
-- What happens when you don't provide enough values for an array?
-- How do 3-dimensional arrays work?
+-   What happens when you don't provide enough values for an array?
+-   How do 3-dimensional arrays work?
 
 *Write your explanation here:*
 
-
-
-### Working with Lists  
+### Working with Lists
 
 ```{r lists, eval=FALSE}
 x <- list(1:5, 11:15, c("a", "b", "c"))
@@ -283,14 +271,12 @@ x
 
 **Your task:**
 
-- How are lists different from vectors?
-- What are the advantages of named lists?
+-   How are lists different from vectors?
+-   What are the advantages of named lists?
 
 *Write your analysis here:*
 
-
-
-### Working with Data Frames and Tibbles  
+### Working with Data Frames and Tibbles
 
 ```{r data-frames, eval=FALSE}
 # Traditional data frame
@@ -333,18 +319,17 @@ x
 
 **Your analysis:**
 
-- What are the differences between data frames and tibbles?
-- When would you use `tribble()` instead of `tibble()`?
+-   What are the differences between data frames and tibbles?
+-   When would you use `tribble()` instead of `tibble()`?
 
 *Write your thoughts here:*
 
+## Loading and Saving Data
 
+Download the `test.csv` file from iLearn and place it in a `data` subfolder within your working directory.
+We'll then load the file using `read_csv()` and explore the available options.
 
-## Loading and Saving Data  
-
-Download the `test.csv` file from iLearn and place it in a `data` subfolder within your working directory. We'll then load the file using `read_csv()` and explore the available options.
-
-### Reading Data  
+### Reading Data
 
 ```{r loading-data, eval=FALSE}
 # Load CSV file
@@ -364,14 +349,12 @@ waldo::compare(x, x_delim)
 
 **Your task:**
 
-- What information does `glimpse()` provide that `str()` doesn't?
-- Are there any differences between `read_csv()` and `read_delim()` results?
+-   What information does `glimpse()` provide that `str()` doesn't?
+-   Are there any differences between `read_csv()` and `read_delim()` results?
 
 *Write your observations here:*
 
-
-
-### Writing Data  
+### Writing Data
 
 ```{r writing-data, eval=FALSE}
 # Create sample data
@@ -396,16 +379,14 @@ waldo::compare(weather_data, weather_check)
 
 **Your task:**
 
-- After running this code, check your `data` folder - what file was created?
-- Why is it good practice to read the data back after saving?
+-   After running this code, check your `data` folder - what file was created?
+-   Why is it good practice to read the data back after saving?
 
 *Write your thoughts here:*
 
+### Selecting and Modifying Values
 
-
-### Selecting and Modifying Values  
-
-#### Working with Vectors  
+#### Working with Vectors
 
 ```{r vector-indexing, eval=FALSE}
 # Vector indexing
@@ -418,8 +399,7 @@ seasons[-2]                  # Exclude second element
 seasons[c(T, T, F, F, F, T, T)]  # Logical indexing
 ```
 
-
-#### Working with Matrices  
+#### Working with Matrices
 
 ```{r matrix-indexing, eval=FALSE}
 # Matrix indexing
@@ -439,7 +419,7 @@ m[-2, -c(2, 3)]            # Exclude row 2, columns 2-3
 m[c(T, F, T), ]            # Logical indexing for rows
 ```
 
-#### Working with Data Frames and Tibbles  
+#### Working with Data Frames and Tibbles
 
 ```{r dataframe-indexing, eval=FALSE}
 # Data frame indexing
@@ -471,8 +451,7 @@ weather$temperature[2] <- 16  # Modify temperature value
 weather
 ```
 
-
-#### Working with Lists  
+#### Working with Lists
 
 ```{r list-indexing, eval=FALSE}
 # List indexing
@@ -499,10 +478,9 @@ nested_list$x3$y2 <- "house"  # Modify nested element
 nested_list
 ```
 
+### Dealing with Missing Values
 
-### Dealing with Missing Values  
-
-#### Understanding NA  
+#### Understanding NA
 
 ```{r missing-values, eval=FALSE}
 # Working with NA
@@ -522,14 +500,14 @@ sum(values, na.rm = TRUE)   # Remove missing values
 mean(values, na.rm = TRUE)  # Same for mean
 ```
 
+# Data Wrangling with dplyr
 
-# Data Wrangling with dplyr  
+## Introduction to dplyr
 
-## Introduction to dplyr  
+Load the `babynames` dataset and explore the main dplyr verbs.
+Each verb performs a specific data manipulation task.
 
-Load the `babynames` dataset and explore the main dplyr verbs. Each verb performs a specific data manipulation task.
-
-### Basic dplyr Operations  
+### Basic dplyr Operations
 
 ```{r dplyr-basics, eval=FALSE}
 library(babynames)
@@ -561,10 +539,9 @@ arrange(babynames, year, desc(prop))
 arrange(babynames, desc(year), desc(prop))
 ```
 
+## Using the Pipe `|>` Operator
 
-## Using the Pipe `|>` Operator  
-
-### Chaining Operations  
+### Chaining Operations
 
 ```{r pipe-operations, eval=FALSE}
 # Traditional nested approach (hard to read)
@@ -589,11 +566,9 @@ babynames |>
   head(10)
 ```
 
+## Summarising Data
 
-
-## Summarising Data  
-
-### Using `summarise()` and `group_by()`  
+### Using `summarise()` and `group_by()`
 
 ```{r summarising-data, eval=FALSE}
 # Basic summaries
@@ -632,9 +607,9 @@ babynames |>
   head(10)
 ```
 
-## Creating New Variables  
+## Creating New Variables
 
-### Using mutate()  
+### Using mutate()
 
 ```{r mutate-examples, eval=FALSE}
 # Add new columns
@@ -669,11 +644,12 @@ babynames |>
   head()
 ```
 
-# Practice Problems  
+# Practice Problems
 
-## Problem 1: Fix the Code  
+## Problem 1: Fix the Code
 
-What's wrong with the following code? Can you fix it?
+What's wrong with the following code?
+Can you fix it?
 
 ```{r fix-code, eval=FALSE, error=TRUE}
 # Problem code:
@@ -682,6 +658,7 @@ filter(babynames, name == Sea)
 ```
 
 **Your corrected code:**
+
 ```{r fix-code-student, eval=FALSE}
 # Fixed code here:
 
@@ -690,46 +667,52 @@ filter(babynames, name == Sea)
 
 **Your explanation of what was wrong:**
 
+## Problem 2: Most Popular Names
 
-
-## Problem 2: Most Popular Names  
-
-Which name was the most popular for a single gender in a single year? Compare arranging by `prop` vs `n`.
+Which name was the most popular for a single gender in a single year?
+Compare arranging by `prop` vs `n`.
 
 ```{r popular-names-student, eval=FALSE}
 # Your code to find highest proportion:
 
+babynames |>
+  arrange(desc(prop)) |>
+  head(5)
 
 # Your code to find highest count:
 
+babynames |>
+  arrange(desc(n)) |>
+  head(5)
 
 ```
 
-**Your analysis:**
-- Are the results the same? Why or why not?
+**Your analysis:** - Are the results the same?
+Why or why not?
 
-
-
-## Problem 3: Popular Girls Names in 2017  
+## Problem 3: Popular Girls Names in 2017
 
 Write a pipeline that will:
 
-1. Filter `babynames` to just girls born in 2017
-2. Select the name and n columns  
-3. Arrange so most popular names are at the top
+1.  Filter `babynames` to just girls born in 2017
+2.  Select the name and n columns\
+3.  Arrange so most popular names are at the top
 
 ```{r girls-2017-student, eval=FALSE}
 # Your pipeline here:
 
-
+babynames |>
+  filter(year == "2017") |>
+  select(name, n) |>
+  arrange(desc(n))
 ```
 
+# Tidy Data with `tidyr`
 
-# Tidy Data with `tidyr`  
+## Understanding Tidy Data
 
-## Understanding Tidy Data  
-
-Explore the concept of tidy data using built-in datasets from `tidyr`. Each dataset represents the same information organised differently.
+Explore the concept of tidy data using built-in datasets from `tidyr`.
+Each dataset represents the same information organised differently.
 
 ```{r tidy-data-explore-student, eval=FALSE}
 # Load tidyr (part of tidyverse)
@@ -743,16 +726,14 @@ table4a  # Cases
 table4b  # Population
 ```
 
-**Your analysis:**
-- Which table is "tidy"? Why?
+**Your analysis:** - Which table is "tidy"?
+Why?
 - What problems do you see with the other tables?
 - How would you describe what each row and column represents in each table?
 
 *Write your analysis here:*
 
-
-
-## Pivoting Data: Lengthening and Widening  
+## Pivoting Data: Lengthening and Widening
 
 ```{r pivoting-student, eval=FALSE}
 # Convert wide to long format
@@ -781,10 +762,9 @@ table4b_long <- table4b |>
 table4b_long
 ```
 
+## Practice with Real Data
 
-## Practice with Real Data  
-
-### Case study: Cholesterol Study  
+### Case study: Cholesterol Study
 
 Convert this dataset to long format and calculate summary statistics for each group.
 
@@ -803,62 +783,81 @@ cholesterol_data
 
 ```{r cholesterol-solution-student, eval=FALSE}
 # Task 1 - Convert to long format:
+cholesterol_tidy <- cholesterol_data |>
+  pivot_longer(
+    cols = everything(),
+    names_to = "diet", 
+    values_to = "cholesterol"
+)
 
+cholesterol_tidy
 
 # Task 2 - Calculate summary statistics:
 
 
 ```
 
-**Your interpretation:**
-- Which diet appears to result in lower cholesterol?
+**Your interpretation:** - Which diet appears to result in lower cholesterol?
 - What do the standard deviations tell you?
 
 *Write your analysis here:*
 
+## Advanced Tidy Data Problems
 
+Sketch out the process to calculate the `rate` for `table2` and `table3`.
+You need to:
 
-## Advanced Tidy Data Problems  
-
-Sketch out the process to calculate the `rate` for `table2` and `table3`. You need to:
-
-a. Extract TB cases per country per year
-b. Extract matching population per country per year  
-c. Divide cases by population, multiply by 10000
-d. Store back in appropriate place
+a.  Extract TB cases per country per year
+b.  Extract matching population per country per year\
+c.  Divide cases by population, multiply by 10000
+d.  Store back in appropriate place
 
 **Hint:** For `table3`, you may find the function `separate_wider_delim` helpful.
 
 ```{r calculate-rates-student, eval=FALSE}
 # Your approach for table2:
+table2 |>
+  pivot_wider(
+    names_from = "type",
+    values_from = "count"
+  ) |>
+  mutate(
+    rate = cases/population *10000
+  )
+
+
 
 
 # Your approach for table3:
 
+table3 |> 
+  separate_wider_delim(
+    cols = rate, 
+    delim = "/",
+    names = c("cases", "population")
+  ) |>
+  mutate(
+    cases = as.numeric(cases),
+    population = as.numeric(population),
+    rate = cases/population * 10000
+  )
 
 ```
 
-**Your explanation:**
-- What's the main challenge with each table format?
+**Your explanation:** - What's the main challenge with each table format?
 - Which approach was easier to implement?
 
 *Write your thoughts here:*
 
+# Final Reflection
 
-
-# Final Reflection  
-
-**What did you learn?**
-- Which concepts were most challenging?
+**What did you learn?** - Which concepts were most challenging?
 - Which dplyr functions do you think you'll use most often?
 - How has your understanding of "tidy data" changed?
 
 *Write your reflections here:*
 
-
-
-**Next steps:**
-- What would you like to explore further?
+**Next steps:** - What would you like to explore further?
 - How might you apply these skills to your own data?
 
 *Write your thoughts here:*
